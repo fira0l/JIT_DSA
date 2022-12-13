@@ -1,0 +1,90 @@
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+struct Array{
+	int size;
+	int *A;
+	
+}p;
+
+void create(Array *a,int s)
+{
+	a->A=new int[s];
+}
+
+void insert(Array *p,int s){
+	for(int i=0;i<s;i++)
+	{
+		cin>>p->A[i];
+	}
+}
+
+void display(Array *p,int s){
+	for(int i=0;i<s;i++)
+	{
+		cout<<" "<<p->A[i];
+	}
+}
+
+void search(Array *p,int size){
+	int d,count=0;
+cout<<"\nenter the number to be searched\n";
+	cin>>d;
+	for(int i=0;i<size;i++)
+	{
+    if(d==p->A[i])
+    count++;
+	}
+	if(count>0)
+	cout<<"The number is found in the array";
+	else
+	cout<<"The number is not found in the array";
+}
+
+void Delete(Array *p,int size)
+ {
+ 	int d,i,j,count=0;
+ 	cout<<"\nEnter the number to be deleted\n";
+ 	cin>>d;
+	for(i=0;i<size;i++)
+	{
+    if(d==p->A[i])
+	{
+		for(j=i;j<(size-1);j++)
+		{
+			p->A[j]=p->A[j+1];
+			count=0;
+			i--;
+			size--;
+		}
+		
+	}
+	    if(count>0)
+        cout<<"\nElement doesn't found in the Array!";
+    else
+    {
+        cout<<"\nElement Deleted Successfully!";
+        cout<<"\n\nThe New Array is:\n";
+        for(j=0; j<size; j++)
+            cout<<p->A[j]<<"  ";
+    }
+
+	}
+ 	
+ }
+
+int main(){
+	cout<<"Enter the size of an array :"<<endl;
+	cin>>p.size;
+	create(&p,p.size);
+	cout<<"Enter Elements of an array :"<<endl;		
+	insert(&p ,p.size); 
+ 	cout<<"The elements of the array :"<<endl;
+ 	display(&p,p.size);
+ 	search(&p,p.size);
+ 	Delete(&p,p.size);
+ 	
+ 	
+}
